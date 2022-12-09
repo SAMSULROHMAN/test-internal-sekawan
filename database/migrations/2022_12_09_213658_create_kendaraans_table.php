@@ -14,9 +14,19 @@ class CreateKendaraansTable extends Migration
     public function up()
     {
         Schema::create('kendaraan', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('nama_kendaraan');
+            $table->string('type_kendaraan');
             $table->timestamps();
         });
+
+        // Schema::table('requests',function(Blueprint $table){
+        //     $table->foreign('id_kendaraan')
+        //     ->references('id')
+        //     ->on('kendaraan')
+        //     ->onDelete('cascade')
+        //     ->onUpdate('cascade');
+        // });
     }
 
     /**
@@ -26,6 +36,11 @@ class CreateKendaraansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kendaraans');
+        // Drop FK
+        // Schema::table('requests',function(Blueprint $table){
+        //     $table->dropForeign('kendaraan_id_kendaraan_foreign');
+        // });
+
+        Schema::dropIfExists('kendaraan');
     }
 }
