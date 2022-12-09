@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('level',['admin','pegawai']);
-            $table->integer('id_request')->unsigned();
+            $table->integer('id_request')->unsigned()->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -14,7 +14,7 @@ class AddIdKendaraanColumn extends Migration
     public function up()
     {
         Schema::table('requests',function(Blueprint $table){
-            $table->integer('id_kendaraan')->unsigned();
+            $table->integer('id_kendaraan')->unsigned()->nullable();
             $table->foreign('id_kendaraan')
             ->references('id')
             ->on('kendaraan')
