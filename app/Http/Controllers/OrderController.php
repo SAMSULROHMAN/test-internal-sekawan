@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Request As Approve;
 use Illuminate\Http\Request;
 use App\Model\Driver;
 use App\Model\Kendaraan;
+use App\Model\Request As Order;
 use Illuminate\Support\Facades\Session;
 
-class RequestController extends Controller
+class OrderController extends Controller
 {
     public function __construct()
     {
@@ -21,8 +21,9 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $approve = Approve::all();
-        return view('approve.index',compact('approve'));
+        $order = Order::all();
+
+        return view('order.index',compact('order'));
     }
 
     /**
@@ -32,7 +33,9 @@ class RequestController extends Controller
      */
     public function create()
     {
-        
+        $driver = Driver::pluck('nama_driver','id');
+        $kendaraan = Kendaraan::pluck('nama_kendaraan','id');
+        return view('order.create',compact('driver','kendaraan'));
     }
 
     /**
@@ -43,16 +46,26 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        //dd($input);
+        $order = new Order();
+        $order->approval = 'decline';
+        $order->id_kendaraan = $request->id_kendaraan;
+        $order->id_drivers = $request->id_drivers;
+        $order->save();
+
+        Session::flash('flash_message','Data Permohonan telah Ditambahkan');
+        return redirect('order');
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Approve $approve)
+    public function show($id)
     {
         //
     }
@@ -60,38 +73,33 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Approve $approve)
+    public function edit($id)
     {
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $approve = Approve::findOrFail($id);
-        $approve->approval = 'approve';
-        $approve->save();
-        //dd($approve);
-        Session::flash('flash_message','Data Permohonan telah Disetujui');
-        return redirect('request');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         //
     }

@@ -22,3 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('kendaraan', KendaraanController::class);
 
 Route::resource('driver', DriverController::class);
+
+Route::resource('request',RequestController::class);
+
+Route::resource('order',OrderController::class);
+
