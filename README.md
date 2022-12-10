@@ -16,7 +16,8 @@ Cara Instalasi :
 AKUN ADMIN :
 Email : admin@admin.admin
 Password : password
-
+=====================
+=====================
 AKUN PEGAWAI
 Email : pegawai@pegawai.pegawai
 Password : password
