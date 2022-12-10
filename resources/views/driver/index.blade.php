@@ -7,8 +7,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Kendaraan
-                    <a href="{{ route('kendaraan.create') }}" class="btn btn-success btn-sm box-button float-right">Tambah</a>
+                    Driver
+                    <a href="{{ route('driver.create') }}" class="btn btn-success btn-sm box-button float-right">Tambah</a>
                 </div>
 
                 <div class="card-body">
@@ -17,23 +17,21 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>Nama Kendaraan</td>
-                                <td>Type Kendaraan</td>
+                                <td>Nama Driver</td>
                                 <td>Opsi</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kendaraan as $kendaraan)
+                            @foreach ($driver as $driver)
                                 <tr>
-                                    <td>{{ $kendaraan->id }}</td>
-                                    <td>{{ $kendaraan->nama_kendaraan }}</td>
-                                    <td>{{ $kendaraan->type_kendaraan }}</td>
+                                    <td>{{ $driver->id }}</td>
+                                    <td>{{ $driver->nama_driver }}</td>
                                     <td>
                                         <div class="box-button">
-                                            {!! link_to('kendaraan/'.$kendaraan->id.'/edit','Edit',['class' => 'btn btn-warning btn-sm']) !!}
+                                            {!! link_to('driver/'.$driver->id.'/edit','Edit',['class' => 'btn btn-warning btn-sm']) !!}
                                         </div>
                                         <div class="box-button">
-                                            {!! Form::open(['method'=> 'DELETE','action' => ['KendaraanController@destroy',$kendaraan->id]]) !!}
+                                            {!! Form::open(['method'=> 'DELETE','action' => ['DriverController@destroy',$driver->id]]) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                                             {!! Form::close() !!}
                                         </div>
@@ -42,7 +40,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $kendaraan->links }}
                 </div>
             </div>
         </div>

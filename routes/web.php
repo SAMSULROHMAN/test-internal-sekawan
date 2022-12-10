@@ -20,3 +20,5 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('kendaraan', KendaraanController::class);
+
+Route::resource('driver', DriverController::class);

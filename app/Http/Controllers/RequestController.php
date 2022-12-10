@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Request;
+use App\Model\Request As Approve;
 use Illuminate\Http\Request;
 
 class RequestController extends Controller
@@ -14,7 +14,8 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        $approve = Approve::all();
+        return view('approve.index',compact('approve'));
     }
 
     /**
@@ -24,7 +25,7 @@ class RequestController extends Controller
      */
     public function create()
     {
-        //
+        return view('')
     }
 
     /**

@@ -7,6 +7,9 @@
                 <a href="{{ route('kendaraan.index') }}">Kendaraan</a>
             </li>
             <li class="list-group-item">
+                <a href="{{ route('driver.index') }}">Driver</a>
+            </li>
+            <li class="list-group-item">
                 <a href="#">Persetujuan</a>
             </li>
             <li class="list-group-item">
