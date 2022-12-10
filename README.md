@@ -2,7 +2,7 @@ PHP VERSION : PHP 7.4
 
 DB VERSION : MySQL Ver 8 
 
-Framework : Laravel 8.4
+Framework : Laravel 6.20.26
 
 Cara Instalasi :
 
