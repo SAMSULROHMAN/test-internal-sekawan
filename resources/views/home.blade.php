@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        @include('components.sidebar')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
@@ -14,7 +15,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!  
+                    <b>{{ Auth::user()->name }}</b>
                 </div>
             </div>
         </div>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Kendaraan;
-use Illuminate\Http\Request;
+use App\Http\Requests\KendaraanRequest;
+use Illuminate\Support\Facades\Session;
 
 class KendaraanController extends Controller
 {
@@ -14,7 +15,8 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        //
+        $kendaraan = Kendaraan::paginate('5');
+        return view('kendaraan.index',compact('kendaraan'));
     }
 
     /**
@@ -24,7 +26,7 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        return view('kendaraan.create');
     }
 
     /**
@@ -33,9 +35,11 @@ class KendaraanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KendaraanRequest $request)
     {
-        //
+        Kendaraan::create($request->all());
+        Session::flash('flash_message','Data berhasil Ditambahkan');
+        return redirect('kendaraan');
     }
 
     /**
@@ -57,7 +61,7 @@ class KendaraanController extends Controller
      */
     public function edit(Kendaraan $kendaraan)
     {
-        //
+        return view('kendaraan.edit',compact('kendaraan'));
     }
 
     /**
@@ -67,9 +71,11 @@ class KendaraanController extends Controller
      * @param  \App\Model\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kendaraan $kendaraan)
+    public function update(KendaraanRequest $request, Kendaraan $kendaraan)
     {
-        //
+        $kendaraan->update($request->all());
+        Session::flash('flash_message','Data berhasil diupdate');
+        return redirect('kendaraan');
     }
 
     /**
@@ -80,6 +86,9 @@ class KendaraanController extends Controller
      */
     public function destroy(Kendaraan $kendaraan)
     {
-        //
+        $kendaraan->delete();
+        Session::flash('flash_message','Data Berhasil Dihapus');
+        Session::flash('penting',true);
+        return redirect('kendaraan');
     }
 }
