@@ -11,7 +11,7 @@
     {!! Form::label('nama_driver', 'Nama Driver:', ['class' => 'form-label']) !!}
     {!! Form::text('nama_driver', null, ['class' => 'form-control']) !!}
     @if ($errors->has('nama_driver'))
-        <span class="form-text">{{ $errors->first('nama_driver') }}</span>
+        <span class="is-invalid">{{ $errors->first('nama_driver') }}</span>
     @endif
     </div>
 

@@ -3,7 +3,7 @@
         <div class="card-header">Menu</div>
 
         <ul class="list-group list-group-flush">
-            @if (Auth::check())
+            @if (Auth::check() && Auth::user()->level == 'admin')
                 <li class="list-group-item">
                     <a href="{{ route('kendaraan.index') }}">Kendaraan</a>
                 </li>
@@ -14,9 +14,11 @@
                     <a href="{{ route('request.index') }}">Persetujuan</a>
                 </li>
             @endif
-            <li class="list-group-item">
-                <a href="{{ route('order.index')}}">Permohonan</a>
-            </li>
+            @if (Auth::check() && Auth::user()->level == 'pegawai')
+                <li class="list-group-item">
+                    <a href="{{ route('order.index')}}">Permohonan</a>
+                </li>
+            @endif
         </ul>
     </div>
 </div>
